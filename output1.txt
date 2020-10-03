@@ -4,7 +4,7 @@ download.txt
 main.backup2.cpp
 main.backup.cpp
 main.cpp
+main.o
 makefile
 output1.txt
 server.exe
-test.txt

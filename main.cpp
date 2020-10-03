@@ -119,6 +119,7 @@ int main() {
             printf("Server is shutting down...\n");
             i = 1;
             send(client, &i, sizeof(int), 0);
+            close(client);
             exit(0);
         }
     }
