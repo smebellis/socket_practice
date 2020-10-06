@@ -23,8 +23,9 @@ int main() {
     int buffersize = 4096;
     char buffer[buffersize], command[100], filename[20];
     struct stat obj;
-    int k, size, file_description;
+    int c, k, size, file_description;
     struct sockaddr_in server_address, from_address;
+    char *f;
     socklen_t fromLength;
 
     //Initialize the socket
@@ -88,8 +89,7 @@ int main() {
                 sendfile(client, file_description, nullptr, size);
             }
         } else if (!strcmp(command, "upload")) {
-            int c = 0, len;
-            char *f;
+
             recv(client, buffer, sizeof(buffer), 0);
             cout << "Preparing to receive file:  " << buffer << endl;
 
@@ -120,6 +120,7 @@ int main() {
             i = 1;
             send(client, &i, sizeof(int), 0);
             close(client);
+            close(server);
             exit(0);
         }
     }
